@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UsuariosController::class, 'index']);
+Route::get('/novo', [UsuariosController::class, 'create']);
+Route::post('/novo', [UsuariosController::class, 'store'])->name('registrar');
+Route::get('/usuario/{id}', [UsuariosController::class, 'show']);
+Route::get('/editar/{id}', [UsuariosController::class, 'edit']);
+Route::post('/editar/{id}', [UsuariosController::class, 'update'])->name('editar');
+Route::get('/excluir/{id}', [UsuariosController::class, 'delete']);
+Route::post('/excluir/{id}', [UsuariosController::class, 'destroy'])->name('excluir');
