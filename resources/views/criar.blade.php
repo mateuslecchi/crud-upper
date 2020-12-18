@@ -8,7 +8,7 @@
             <label class="form-label" for="">Nome Completo</label>
             <input class="form-control" type="text" name="nome" required>
             <label class="form-label" for="">CPF</label>
-            <input class="form-control" type="text" name="cpf" required>
+            <input class="form-control" type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx" required>
             <label class="form-label" for="">Data de Nascimento</label>
             <input class="form-control" type="date" name="nasc" required>
             <label class="form-label" for="">Email</label>
