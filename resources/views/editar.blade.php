@@ -7,7 +7,7 @@
             <label class="form-label" for="">Nome Completo</label>
             <input class="form-control" type="text" name="nome" value="{{ $usuario->nome  }}">
             <label class="form-label" for="">CPF</label>
-            <input class="form-control" type="text" name="cpf" value="{{ $usuario->cpf  }}">
+            <input class="form-control" type="text" name="cpf" value="{{ $usuario->cpf  }}"  pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx" >
             <label class="form-label" for="">Data de Nascimento</label>
             <input class="form-control" type="date" name="nasc" value="{{ $usuario->nasc->format('Y-m-d')  }}">
             <label class="form-label" for="">Email</label>
