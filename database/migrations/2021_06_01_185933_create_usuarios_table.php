@@ -23,7 +23,6 @@ class CreateUsuariosTable extends Migration
             $table->string('logradouro'); //logradouro do usuario
             $table->string('cidade'); //cidade do usuario
             $table->string('estado'); //estado (uf) do usuario
-
         });
     }
 
