@@ -14,17 +14,22 @@ use App\Http\Controllers\UsuariosController;
 |
 */
 
-Route::get('/', [UsuariosController::class, 'index']);
-Route::get('/novo', [UsuariosController::class, 'create']);
-Route::post('/novo', [UsuariosController::class, 'store'])->name('registrar');
-Route::get('/usuario/{id}', [UsuariosController::class, 'show']);
-Route::get('/editar/{id}', [UsuariosController::class, 'edit']);
-Route::post('/editar/{id}', [UsuariosController::class, 'update'])->name('editar');
-Route::get('/excluir/{id}', [UsuariosController::class, 'delete']);
-Route::post('/excluir/{id}', [UsuariosController::class, 'destroy'])->name('excluir');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
+    Route::get('/novo', [UsuariosController::class, 'create'])->name('novo');
+    Route::post('/novo', [UsuariosController::class, 'store'])->name('registrar');
+    Route::get('/usuario/{id}', [UsuariosController::class, 'show']);
+    Route::get('/editar/{id}', [UsuariosController::class, 'edit']);
+    Route::post('/editar/{id}', [UsuariosController::class, 'update'])->name('editar');
+    Route::get('/excluir/{id}', [UsuariosController::class, 'delete']);
+    Route::post('/excluir/{id}', [UsuariosController::class, 'destroy'])->name('excluir');
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
