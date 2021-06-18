@@ -15,11 +15,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('usuarios')" :active="request()->routeIs('usuarios')">
-                        {{ __('Usuarios') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('novo')" :active="request()->routeIs('novo')">
-                        {{ __('Cadastrar Novo') }}
+                    <x-nav-link :href="route('posts')" :active="request()->routeIs('posts','novo','detalhes')">
+                        {{ __('Notícias') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -72,11 +69,8 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('usuarios')" :active="request()->routeIs('usuarios')">
-                {{ __('Usuários') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('novo')" :active="request()->routeIs('novo')">
-                {{ __('Cadastrar Novo') }}
+            <x-responsive-nav-link :href="route('posts')" :active="request()->routeIs('posts','novo','detalhes')">
+                {{ __('Notícias') }}
             </x-responsive-nav-link>
         </div>
 
