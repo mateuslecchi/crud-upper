@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UsuariosApiController;
 
 
 /*
@@ -18,5 +17,5 @@ use App\Http\Controllers\UsuariosApiController;
 */
 
 Route::middleware('api')->group(function () {
-    Route::resource('posts', UsuariosApiController::class);
+    //
 });

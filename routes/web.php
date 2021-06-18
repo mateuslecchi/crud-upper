@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\Post\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,21 +15,27 @@ use App\Http\Controllers\UsuariosController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::get('/admin', function(){
+    return redirect('/admin/dashboard');
+});
+Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
-    Route::get('/novo', [UsuariosController::class, 'create'])->name('novo');
-    Route::post('/novo', [UsuariosController::class, 'store'])->name('registrar');
-    Route::get('/usuario/{id}', [UsuariosController::class, 'show']);
-    Route::get('/editar/{id}', [UsuariosController::class, 'edit']);
-    Route::post('/editar/{id}', [UsuariosController::class, 'update'])->name('editar');
-    Route::get('/excluir/{id}', [UsuariosController::class, 'delete']);
-    Route::post('/excluir/{id}', [UsuariosController::class, 'destroy'])->name('excluir');
+
+    Route::get('/posts', [PostController::class, 'index'])->name('posts');
+    Route::post('/posts/status', [PostController::class, 'changeStatus'])->name('status');
+    Route::post('/posts/destak', [PostController::class, 'changeDestak'])->name('destak');
+    Route::get('/posts/novo', [PostController::class, 'create'])->name('novo');
+    Route::post('/posts/novo', [PostController::class, 'store'])->name('salvar');
+    Route::get('/post/editar/{id}', [PostController::class, 'edit'])->name('detalhes');
+    Route::post('/post/editar/{id}', [PostController::class, 'update'])->name('editar');
+    Route::post('/post/excluir/{id}', [PostController::class, 'destroy'])->name('excluir');
+    Route::post('/post/imgupload', [PostController::class, 'imgUpload'])->name('imgUpload');
 });
 
 require __DIR__ . '/auth.php';
