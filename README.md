@@ -1,4 +1,4 @@
-# Crud UpperSoft
+# Sistema Completo de Blog
 
 ### Instalação
 1. Clonar este repositório
@@ -7,4 +7,4 @@
 4. Executar `php artisan migrate` para as migrações 
 
 
-### Feito com [Laravel](https://laravel.com/) e [Bootstrap](https://getbootstrap.com/)
+### Feito com [Laravel](https://laravel.com/) e seu ecossistema
